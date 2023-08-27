@@ -1,9 +1,12 @@
 import express, { Router, response } from "express";
 import serverless from "serverless-http";
+import cors from "cors";
 
 const api = express();
 
 const APIKey = process.env.APIKey;
+
+api.use(cors());
 
 const router = Router();
 router.get("/hello", (req, res) =>
