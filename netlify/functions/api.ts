@@ -12,9 +12,11 @@ const router = Router();
 router.get("/hello", (req, res) =>
 	fetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=COLOMBIA}&appid=${APIKey}`
-	).then((response) => {
-		res.send(response);
-	})
+	)
+		.then((response) => response.json())
+		.then((json) => {
+			res.send(json);
+		})
 );
 
 api.use("/api/", router);
