@@ -1,13 +1,17 @@
-import express, { Router } from "express";
+import express, { Router, response } from "express";
 import serverless from "serverless-http";
 
 const api = express();
 
-const value = process.env.EXAMPLE_KEY;
+const APIKey = process.env.APIKey;
 
 const router = Router();
 router.get("/hello", (req, res) =>
-	res.send(`<h2>Hello World! ${value ? value : ", no key"} <h2>`)
+	fetch(
+		`https://api.openweathermap.org/data/2.5/weather?q=COLOMBIA}&appid=${APIKey}`
+	).then((response) => {
+		res.send(response);
+	})
 );
 
 api.use("/api/", router);
