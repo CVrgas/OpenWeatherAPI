@@ -13,7 +13,7 @@ router.get("/hello", (req, res) => res.send("<h1>Hellow<h1>"));
 router.get("/hello/:city", (req, res) => {
 	const city = req.params.city;
 	fetch(
-		`https://api.openweathermap.org/data/2.5/weather?q=${city}}&appid=${APIKey}`
+		`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`
 	)
 		.then((response) => response.json())
 		.then((json) => {
